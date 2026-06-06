@@ -1,0 +1,147 @@
+{
+  "generatedAt": "2026-06-06T00:00:00.000Z",
+  "groups": [
+    {
+      "id": "A",
+      "teams": [
+        { "name": "Mexico", "code": "MEX", "ranking": 15 },
+        { "name": "South Africa", "code": "RSA", "ranking": 60 },
+        { "name": "Korea Republic", "code": "KOR", "ranking": 25, "aliases": ["South Korea"] },
+        { "name": "Czechia", "code": "CZE", "ranking": 41, "aliases": ["Czech Republic"] }
+      ]
+    },
+    {
+      "id": "B",
+      "teams": [
+        { "name": "Canada", "code": "CAN", "ranking": 30 },
+        { "name": "Switzerland", "code": "SUI", "ranking": 19 },
+        { "name": "Qatar", "code": "QAT", "ranking": 55 },
+        { "name": "Bosnia and Herzegovina", "code": "BIH", "ranking": 65 }
+      ]
+    },
+    {
+      "id": "C",
+      "teams": [
+        { "name": "Brazil", "code": "BRA", "ranking": 6 },
+        { "name": "Morocco", "code": "MAR", "ranking": 8 },
+        { "name": "Scotland", "code": "SCO", "ranking": 43 },
+        { "name": "Haiti", "code": "HAI", "ranking": 83 }
+      ]
+    },
+    {
+      "id": "D",
+      "teams": [
+        { "name": "United States", "code": "USA", "ranking": 16, "aliases": ["USA", "USMNT"] },
+        { "name": "Paraguay", "code": "PAR", "ranking": 40 },
+        { "name": "Australia", "code": "AUS", "ranking": 27 },
+        { "name": "Turkiye", "code": "TUR", "ranking": 22, "aliases": ["Turkey", "Türkiye"] }
+      ]
+    },
+    {
+      "id": "E",
+      "teams": [
+        { "name": "Germany", "code": "GER", "ranking": 10 },
+        { "name": "Curacao", "code": "CUW", "ranking": 82, "aliases": ["Curaçao"] },
+        { "name": "Ivory Coast", "code": "CIV", "ranking": 34, "aliases": ["Cote d'Ivoire", "Côte d'Ivoire"] },
+        { "name": "Ecuador", "code": "ECU", "ranking": 23 }
+      ]
+    },
+    {
+      "id": "F",
+      "teams": [
+        { "name": "Netherlands", "code": "NED", "ranking": 7 },
+        { "name": "Japan", "code": "JPN", "ranking": 18 },
+        { "name": "Tunisia", "code": "TUN", "ranking": 44 },
+        { "name": "Sweden", "code": "SWE", "ranking": 38 }
+      ]
+    },
+    {
+      "id": "G",
+      "teams": [
+        { "name": "Belgium", "code": "BEL", "ranking": 9 },
+        { "name": "Egypt", "code": "EGY", "ranking": 29 },
+        { "name": "Iran", "code": "IRN", "ranking": 21 },
+        { "name": "New Zealand", "code": "NZL", "ranking": 85 }
+      ]
+    },
+    {
+      "id": "H",
+      "teams": [
+        { "name": "Spain", "code": "ESP", "ranking": 2 },
+        { "name": "Cabo Verde", "code": "CPV", "ranking": 69, "aliases": ["Cape Verde"] },
+        { "name": "Saudi Arabia", "code": "KSA", "ranking": 61 },
+        { "name": "Uruguay", "code": "URU", "ranking": 17 }
+      ]
+    },
+    {
+      "id": "I",
+      "teams": [
+        { "name": "France", "code": "FRA", "ranking": 1 },
+        { "name": "Senegal", "code": "SEN", "ranking": 14 },
+        { "name": "Norway", "code": "NOR", "ranking": 31 },
+        { "name": "Iraq", "code": "IRQ", "ranking": 57 }
+      ]
+    },
+    {
+      "id": "J",
+      "teams": [
+        { "name": "Argentina", "code": "ARG", "ranking": 3 },
+        { "name": "Algeria", "code": "ALG", "ranking": 28 },
+        { "name": "Austria", "code": "AUT", "ranking": 24 },
+        { "name": "Jordan", "code": "JOR", "ranking": 63 }
+      ]
+    },
+    {
+      "id": "K",
+      "teams": [
+        { "name": "Portugal", "code": "POR", "ranking": 5 },
+        { "name": "Uzbekistan", "code": "UZB", "ranking": 50 },
+        { "name": "Colombia", "code": "COL", "ranking": 13 },
+        { "name": "DR Congo", "code": "COD", "ranking": 46, "aliases": ["Congo DR", "Congo", "Democratic Republic of the Congo"] }
+      ]
+    },
+    {
+      "id": "L",
+      "teams": [
+        { "name": "England", "code": "ENG", "ranking": 4 },
+        { "name": "Croatia", "code": "CRO", "ranking": 11 },
+        { "name": "Ghana", "code": "GHA", "ranking": 74 },
+        { "name": "Panama", "code": "PAN", "ranking": 33 }
+      ]
+    }
+  ],
+  "knockoutTemplates": [
+    { "id": "r32-1", "stage": "Round of 32", "homeRef": "A1", "awayRef": "B2", "kickoff": "2026-06-28T18:00:00.000Z" },
+    { "id": "r32-2", "stage": "Round of 32", "homeRef": "C1", "awayRef": "D2", "kickoff": "2026-06-28T21:00:00.000Z" },
+    { "id": "r32-3", "stage": "Round of 32", "homeRef": "E1", "awayRef": "F2", "kickoff": "2026-06-29T18:00:00.000Z" },
+    { "id": "r32-4", "stage": "Round of 32", "homeRef": "G1", "awayRef": "H2", "kickoff": "2026-06-29T21:00:00.000Z" },
+    { "id": "r32-5", "stage": "Round of 32", "homeRef": "I1", "awayRef": "J2", "kickoff": "2026-06-30T18:00:00.000Z" },
+    { "id": "r32-6", "stage": "Round of 32", "homeRef": "K1", "awayRef": "L2", "kickoff": "2026-06-30T21:00:00.000Z" },
+    { "id": "r32-7", "stage": "Round of 32", "homeRef": "B1", "awayRef": "A2", "kickoff": "2026-07-01T18:00:00.000Z" },
+    { "id": "r32-8", "stage": "Round of 32", "homeRef": "D1", "awayRef": "C2", "kickoff": "2026-07-01T21:00:00.000Z" },
+    { "id": "r32-9", "stage": "Round of 32", "homeRef": "F1", "awayRef": "E2", "kickoff": "2026-07-02T18:00:00.000Z" },
+    { "id": "r32-10", "stage": "Round of 32", "homeRef": "H1", "awayRef": "G2", "kickoff": "2026-07-02T21:00:00.000Z" },
+    { "id": "r32-11", "stage": "Round of 32", "homeRef": "J1", "awayRef": "I2", "kickoff": "2026-07-03T18:00:00.000Z" },
+    { "id": "r32-12", "stage": "Round of 32", "homeRef": "L1", "awayRef": "K2", "kickoff": "2026-07-03T21:00:00.000Z" },
+    { "id": "r32-13", "stage": "Round of 32", "homeRef": "3A/B/C", "awayRef": "3D/E/F", "kickoff": "2026-07-04T18:00:00.000Z" },
+    { "id": "r32-14", "stage": "Round of 32", "homeRef": "3G/H/I", "awayRef": "3J/K/L", "kickoff": "2026-07-04T21:00:00.000Z" },
+    { "id": "r32-15", "stage": "Round of 32", "homeRef": "Best 3rd 1", "awayRef": "Best 3rd 2", "kickoff": "2026-07-05T18:00:00.000Z" },
+    { "id": "r32-16", "stage": "Round of 32", "homeRef": "Best 3rd 3", "awayRef": "Best 3rd 4", "kickoff": "2026-07-05T21:00:00.000Z" },
+    { "id": "r16-1", "stage": "Round of 16", "homeRef": "Winner R32-1", "awayRef": "Winner R32-2", "kickoff": "2026-07-08T18:00:00.000Z" },
+    { "id": "r16-2", "stage": "Round of 16", "homeRef": "Winner R32-3", "awayRef": "Winner R32-4", "kickoff": "2026-07-08T21:00:00.000Z" },
+    { "id": "r16-3", "stage": "Round of 16", "homeRef": "Winner R32-5", "awayRef": "Winner R32-6", "kickoff": "2026-07-09T18:00:00.000Z" },
+    { "id": "r16-4", "stage": "Round of 16", "homeRef": "Winner R32-7", "awayRef": "Winner R32-8", "kickoff": "2026-07-09T21:00:00.000Z" },
+    { "id": "r16-5", "stage": "Round of 16", "homeRef": "Winner R32-9", "awayRef": "Winner R32-10", "kickoff": "2026-07-10T18:00:00.000Z" },
+    { "id": "r16-6", "stage": "Round of 16", "homeRef": "Winner R32-11", "awayRef": "Winner R32-12", "kickoff": "2026-07-10T21:00:00.000Z" },
+    { "id": "r16-7", "stage": "Round of 16", "homeRef": "Winner R32-13", "awayRef": "Winner R32-14", "kickoff": "2026-07-11T18:00:00.000Z" },
+    { "id": "r16-8", "stage": "Round of 16", "homeRef": "Winner R32-15", "awayRef": "Winner R32-16", "kickoff": "2026-07-11T21:00:00.000Z" },
+    { "id": "qf-1", "stage": "Quarterfinal", "homeRef": "Winner R16-1", "awayRef": "Winner R16-2", "kickoff": "2026-07-14T18:00:00.000Z" },
+    { "id": "qf-2", "stage": "Quarterfinal", "homeRef": "Winner R16-3", "awayRef": "Winner R16-4", "kickoff": "2026-07-14T21:00:00.000Z" },
+    { "id": "qf-3", "stage": "Quarterfinal", "homeRef": "Winner R16-5", "awayRef": "Winner R16-6", "kickoff": "2026-07-15T18:00:00.000Z" },
+    { "id": "qf-4", "stage": "Quarterfinal", "homeRef": "Winner R16-7", "awayRef": "Winner R16-8", "kickoff": "2026-07-15T21:00:00.000Z" },
+    { "id": "sf-1", "stage": "Semifinal", "homeRef": "Winner QF-1", "awayRef": "Winner QF-2", "kickoff": "2026-07-18T18:00:00.000Z" },
+    { "id": "sf-2", "stage": "Semifinal", "homeRef": "Winner QF-3", "awayRef": "Winner QF-4", "kickoff": "2026-07-18T21:00:00.000Z" },
+    { "id": "tp-1", "stage": "Third-place Match", "homeRef": "Loser SF-1", "awayRef": "Loser SF-2", "kickoff": "2026-07-21T18:00:00.000Z" },
+    { "id": "f-1", "stage": "Final", "homeRef": "Winner SF-1", "awayRef": "Winner SF-2", "kickoff": "2026-07-22T19:00:00.000Z" }
+  ]
+}

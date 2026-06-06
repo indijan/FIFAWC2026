@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #07111d;
+  --foreground: #e6edf5;
+  --muted: #96a3b6;
+  --panel: rgba(13, 24, 37, 0.88);
+  --panel-strong: rgba(7, 17, 29, 0.94);
+  --line: rgba(141, 211, 199, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(141, 211, 199, 0.14), transparent 28%),
+    radial-gradient(circle at 20% 20%, rgba(243, 207, 122, 0.08), transparent 16%),
+    linear-gradient(180deg, #08121d 0%, #050b14 100%);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    linear-gradient(180deg, rgba(5, 11, 20, 0.12), rgba(5, 11, 20, 0.24)),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 56px,
+      rgba(255, 255, 255, 0.018) 56px,
+      rgba(255, 255, 255, 0.018) 57px
+    );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(141, 211, 199, 0.28);
+}
+
+@layer utilities {
+  .panel-surface {
+    @apply border border-white/10 bg-slate-950/65 shadow-panel backdrop-blur;
+  }
+
+  .panel-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
