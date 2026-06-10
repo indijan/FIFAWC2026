@@ -22,7 +22,7 @@ const config: Config = {
         panel: "0 24px 60px rgba(0, 0, 0, 0.28)",
       },
       fontFamily: {
-        sans: ['"Avenir Next"', '"Segoe UI"', "sans-serif"],
+        sans: ['"Avenir Next"', '"Segoe UI"', '"Apple Color Emoji"', '"Segoe UI Emoji"', "sans-serif"],
         display: ['"Iowan Old Style"', "Georgia", "serif"],
         mono: ['"SFMono-Regular"', '"Menlo"', "monospace"],
       },

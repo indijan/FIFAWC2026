@@ -69,7 +69,7 @@ export function resolveTeamReference(value: string) {
 }
 
 export function rankingToElo(ranking: number): number {
-  return Math.round(2100 - (ranking - 1) * 7.5);
+  return Math.round(2200 - (ranking - 1) * 10);
 }
 
 export function getTeamElo(nameOrCode: string): number | undefined {

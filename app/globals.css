@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--foreground);
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Avenir Next", "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
   background:
     linear-gradient(180deg, rgba(5, 11, 20, 0.12), rgba(5, 11, 20, 0.24)),
     repeating-linear-gradient(
@@ -65,5 +65,9 @@ input {
       linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
     background-size: 18px 18px;
   }
-}
 
+  .flag-emoji {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-variant-emoji: emoji;
+  }
+}

@@ -106,7 +106,7 @@ export interface Prediction {
   regularTimeDecisionPct?: number;
   extraTimePct?: number;
   penaltiesPct?: number;
-  confidence: "low" | "medium" | "high";
+  confidence: "very low" | "low" | "medium" | "high" | "very high";
   reasoningShort: string;
   dataFreshness: string;
   disclaimer: string;
