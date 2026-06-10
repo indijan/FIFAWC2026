@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useState } from "react";
 
 import { AccordionSection } from "@/components/AccordionSection";
 import { Disclaimer } from "@/components/Disclaimer";
@@ -39,14 +39,18 @@ export function DashboardShell({
   const [freshnessLabel, setFreshnessLabel] = useState(initialSnapshot.freshnessLabel);
   const [source, setSource] = useState(initialSnapshot.source);
 
-  const featuredMatches = getFeaturedMatches(matches);
-  const connectedSources = Array.from(
-    new Set(
-      source
-        .split("->")
-        .map((item) => item.trim())
-        .filter((item) => Boolean(item) && item !== "no-provider-data"),
-    ),
+  const featuredMatches = useMemo(() => getFeaturedMatches(matches), [matches]);
+  const connectedSources = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          source
+            .split("->")
+            .map((item) => item.trim())
+            .filter((item) => Boolean(item) && item !== "no-provider-data"),
+        ),
+      ),
+    [source],
   );
   const hasProviderData = connectedSources.length > 0;
 

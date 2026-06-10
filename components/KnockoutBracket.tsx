@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { FlagTeam } from "@/components/FlagTeam";
 import { MatchStatusBadge } from "@/components/MatchStatusBadge";
 import { ProbabilityBars } from "@/components/ProbabilityBars";
@@ -20,10 +22,18 @@ export function KnockoutBracket({
   matches: Match[];
   predictions: Record<string, Prediction | null>;
 }) {
+  const groupedByStage = useMemo(
+    () =>
+      STAGE_ORDER.map((stage) => ({
+        stage,
+        stageMatches: matches.filter((match) => match.stage === stage),
+      })),
+    [matches],
+  );
+
   return (
     <div className="grid gap-4 xl:grid-cols-3">
-      {STAGE_ORDER.map((stage) => {
-        const stageMatches = matches.filter((match) => match.stage === stage);
+      {groupedByStage.map(({ stage, stageMatches }) => {
 
         if (stageMatches.length === 0) {
           return null;

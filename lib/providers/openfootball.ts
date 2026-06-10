@@ -3,9 +3,42 @@ import { resolveTeamReference } from "@/lib/team-metadata";
 import { Match, MatchStage, MatchStatus, ProviderSnapshot, Team } from "@/lib/types";
 import { fetchJson } from "@/lib/utils";
 
+type OpenFootballMatch = {
+  id?: string | number;
+  home_team?: Record<string, unknown> | string;
+  homeTeam?: Record<string, unknown> | string;
+  team1?: Record<string, unknown> | string;
+  home?: Record<string, unknown> | string;
+  away_team?: Record<string, unknown> | string;
+  awayTeam?: Record<string, unknown> | string;
+  team2?: Record<string, unknown> | string;
+  away?: Record<string, unknown> | string;
+  date?: string;
+  utcDate?: string;
+  time?: string;
+  kickoff?: string;
+  status?: string;
+  round?: string;
+  stage?: string;
+  group?: string;
+  ground?: string;
+  city?: string;
+  venue?: string;
+  score?: {
+    home?: number;
+    away?: number;
+    ft?: [number, number];
+  };
+  result?: {
+    home?: number;
+    away?: number;
+    ft?: [number, number];
+  };
+};
+
 type OpenFootballPayload = {
-  matches?: unknown[];
-} | unknown[];
+  matches?: OpenFootballMatch[];
+} | OpenFootballMatch[];
 
 const OPENFOOTBALL_URLS = [
   "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
@@ -29,7 +62,7 @@ function normalizeStatus(status?: string): MatchStatus {
   return "upcoming";
 }
 
-function buildTeam(raw: Record<string, unknown> | string | undefined, fallbackId: string): Team {
+function buildTeam(raw: Record<string, unknown> | string | undefined | null, fallbackId: string): Team {
   if (typeof raw === "string") {
     return resolveTeamReference(raw);
   }
@@ -104,7 +137,7 @@ function normalizeStage(round?: string): MatchStage {
   return "Group Stage";
 }
 
-function normalizeMatch(raw: Record<string, unknown>, index: number): Match | null {
+function normalizeMatch(raw: OpenFootballMatch, index: number): Match | null {
   const homeRaw = (raw.home_team ?? raw.homeTeam ?? raw.team1 ?? raw.home) as
     | Record<string, unknown>
     | string
@@ -179,11 +212,11 @@ export async function getOpenFootballSnapshot(): Promise<ProviderSnapshot | null
   for (const url of OPENFOOTBALL_URLS) {
     try {
       const payload = await fetchJson<OpenFootballPayload>(url);
-      const rawMatches = Array.isArray(payload) ? payload : payload.matches ?? [];
+      const rawMatches: OpenFootballMatch[] = Array.isArray(payload) ? payload : (payload.matches ?? []);
       const matches = rawMatches
         .map((entry, index) =>
           typeof entry === "object" && entry !== null
-            ? normalizeMatch(entry as Record<string, unknown>, index)
+            ? normalizeMatch(entry, index)
             : null,
         )
         .filter((match): match is Match => Boolean(match));

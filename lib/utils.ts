@@ -28,12 +28,27 @@ export function clamp(value: number, min: number, max: number) {
 export function normalizePercentages(values: number[]) {
   const safeValues = values.map((value) => Math.max(0, value));
   const total = safeValues.reduce((sum, value) => sum + value, 0) || 1;
-  const normalized = safeValues.map((value) => (value / total) * 100);
-  const rounded = normalized.map((value) => Math.round(value * 10) / 10);
-  const drift = Math.round((100 - rounded.reduce((sum, value) => sum + value, 0)) * 10) / 10;
+  const raw = safeValues.map((value) => (value / total) * 100);
+  const rounded = raw.map((value) => Math.round(value * 10) / 10);
+  let currentSum = rounded.reduce((sum, value) => sum + value, 0);
+  let drift = Math.round((100 - currentSum) * 10) / 10;
 
-  if (rounded.length > 0) {
-    rounded[0] = Math.round((rounded[0] + drift) * 10) / 10;
+  if (Math.abs(drift) < 0.01) return rounded;
+
+  const step = drift > 0 ? 0.1 : -0.1;
+  const targets = rounded
+    .map((value, index) => ({
+      index,
+      priority: Math.abs(value - Math.round(value)),
+    }))
+    .sort((left, right) => (drift > 0 ? right.priority - left.priority : left.priority - right.priority));
+
+  for (const target of targets) {
+    if (Math.abs(drift) < 0.01) break;
+    const candidate = Math.round((rounded[target.index] + step) * 10) / 10;
+    if (candidate < 0 || candidate > 100) continue;
+    rounded[target.index] = candidate;
+    drift = Math.round((drift - step) * 10) / 10;
   }
 
   return rounded;
@@ -81,7 +96,7 @@ export function isKnockoutMatch(match: Match) {
 }
 
 export function buildPredictionLookup(predictions: Prediction[]) {
-  return predictions.reduce<Record<string, Prediction>>((accumulator, prediction) => {
+  return predictions.reduce<Record<string, Prediction | null>>((accumulator, prediction) => {
     accumulator[prediction.matchId] = prediction;
     return accumulator;
   }, {});

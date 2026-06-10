@@ -10,7 +10,7 @@ function placeholderTeam(name: string): Team {
 }
 
 function resolveStandingRef(reference: string, standings: GroupStanding[]) {
-  const match = reference.match(/^([A-L])([1-4])$/);
+  const match = reference.match(/^([A-P])([1-4])$/);
 
   if (!match) {
     return placeholderTeam(reference);

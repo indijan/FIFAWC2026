@@ -17,6 +17,7 @@ export function AccordionSection({
 }) {
   const [open, setOpen] = useState(defaultOpen || forcedOpen);
   const expanded = forcedOpen || open;
+  const contentId = `accordion-content-${title.replace(/\s+/g, "-").toLowerCase()}`;
 
   return (
     <section className="panel-surface rounded-[2rem] p-4 md:p-5">
@@ -29,6 +30,7 @@ export function AccordionSection({
         }}
         className="flex w-full items-center justify-between gap-4 text-left"
         aria-expanded={expanded}
+        aria-controls={contentId}
       >
         <div>
           <h2 className="font-display text-3xl text-ink">{title}</h2>
@@ -38,7 +40,13 @@ export function AccordionSection({
           {forcedOpen ? "Pinned open" : expanded ? "Collapse" : "Expand"}
         </span>
       </button>
-      <div className={`${expanded ? "mt-5 block" : "hidden"}`}>{children}</div>
+      <div
+        id={contentId}
+        className={`${expanded ? "mt-5 block" : "hidden"}`}
+        aria-hidden={!expanded}
+      >
+        {children}
+      </div>
     </section>
   );
 }

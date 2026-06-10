@@ -44,7 +44,11 @@ function normalizeStatus(status?: string) {
 }
 
 export async function getTheSportsDbSnapshot(): Promise<ProviderSnapshot | null> {
-  const apiKey = process.env.THESPORTSDB_API_KEY || "123";
+  const apiKey = process.env.THESPORTSDB_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
 
   try {
     const payload = await fetchJson<{ events?: TheSportsDbEvent[] }>(

@@ -1,15 +1,21 @@
+import { useMemo } from "react";
+
 import { FlagTeam } from "@/components/FlagTeam";
 import { MatchStatusBadge } from "@/components/MatchStatusBadge";
 import { GroupStanding } from "@/lib/types";
 import { formatKickoff } from "@/lib/utils";
 
 export function GroupTable({ standing }: { standing: GroupStanding }) {
-  const headToHeadRows = Array.from(
-    new Map(
-      standing.rows
-        .flatMap((row) => row.headToHeadResults)
-        .map((match) => [match.id, match]),
-    ).values(),
+  const headToHeadRows = useMemo(
+    () =>
+      Array.from(
+        new Map(
+          standing.rows
+            .flatMap((row) => row.headToHeadResults)
+            .map((match) => [match.id, match]),
+        ).values(),
+      ),
+    [standing.rows],
   );
 
   return (

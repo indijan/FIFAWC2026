@@ -23,10 +23,12 @@ export function MatchStatusBadge({
 }) {
   return (
     <span
+      role="status"
+      aria-live="polite"
       className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold tracking-[0.18em] ring-1 ${STATUS_STYLES[status]}`}
     >
       {STATUS_LABELS[status]}
-      {(status === "live" || status === "halftime") && minute ? <span>{minute}'</span> : null}
+      {(status === "live" || status === "halftime") && minute !== undefined && minute !== null ? <span>{minute}'</span> : null}
     </span>
   );
 }

@@ -59,10 +59,21 @@ export function toTeamFromSeed(seed: TeamSeed): Team {
     code: seed.code,
     flagEmoji: countryCodeToFlagEmoji(seed.code),
     ranking: seed.ranking,
+    elo: rankingToElo(seed.ranking),
   };
 }
 
 export function resolveTeamReference(value: string) {
   const seed = getTeamSeedByNameOrCode(value);
   return seed ? toTeamFromSeed(seed) : placeholderTeam(value);
+}
+
+export function rankingToElo(ranking: number): number {
+  return Math.round(2100 - (ranking - 1) * 7.5);
+}
+
+export function getTeamElo(nameOrCode: string): number | undefined {
+  const seed = getTeamSeedByNameOrCode(nameOrCode);
+  if (!seed) return undefined;
+  return rankingToElo(seed.ranking);
 }

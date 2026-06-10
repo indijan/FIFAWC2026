@@ -1,5 +1,5 @@
 import { countryCodeToFlagEmoji } from "@/lib/flags";
-import { GroupStanding, Match, MatchStats, ProviderSnapshot, StandingRow, Team } from "@/lib/types";
+import { GroupStanding, Match, MatchStage, MatchStats, ProviderSnapshot, StandingRow, Team } from "@/lib/types";
 import { fetchJson } from "@/lib/utils";
 
 type ApiSportsFixture = {
@@ -51,6 +51,22 @@ function toTeam(raw: { id?: number; name?: string; code?: string }, fallback: st
     code,
     flagEmoji: countryCodeToFlagEmoji(code),
   };
+}
+
+function normalizeStageFromApiSports(round?: string): MatchStage {
+  if (!round) return "Group Stage";
+
+  const value = round.toLowerCase();
+
+  if (value.includes("group")) return "Group Stage";
+  if (value.includes("round of 32") || value.includes("round 1") || value.includes("first round")) return "Round of 32";
+  if (value.includes("round of 16") || value.includes("round 2") || value.includes("second round")) return "Round of 16";
+  if (value.includes("quarter")) return "Quarterfinal";
+  if (value.includes("semi")) return "Semifinal";
+  if (value.includes("third") || value.includes("3rd place")) return "Third-place Match";
+  if (value.includes("final")) return "Final";
+
+  return "Round of 32";
 }
 
 function statusFromApiSports(short: string) {
@@ -126,6 +142,22 @@ function getStats(fixture: ApiSportsFixture): MatchStats | undefined {
       home: statValue(fixture.statistics, homeId, "Red Cards"),
       away: statValue(fixture.statistics, awayId, "Red Cards"),
     },
+    dangerousAttacks: {
+      home: statValue(fixture.statistics, homeId, "Dangerous Attacks"),
+      away: statValue(fixture.statistics, awayId, "Dangerous Attacks"),
+    },
+    totalPasses: {
+      home: statValue(fixture.statistics, homeId, "Total passes"),
+      away: statValue(fixture.statistics, awayId, "Total passes"),
+    },
+    passesAccurate: {
+      home: statValue(fixture.statistics, homeId, "Passes accurate"),
+      away: statValue(fixture.statistics, awayId, "Passes accurate"),
+    },
+    goalkeeperSaves: {
+      home: statValue(fixture.statistics, homeId, "Goalkeeper saves"),
+      away: statValue(fixture.statistics, awayId, "Goalkeeper saves"),
+    },
   };
 }
 
@@ -181,7 +213,7 @@ export async function getApiSportsSnapshot(): Promise<ProviderSnapshot | null> {
         minute: fixture.fixture.status.elapsed,
         homeScore: fixture.goals.home ?? undefined,
         awayScore: fixture.goals.away ?? undefined,
-        stage: fixture.league.round?.includes("Group") ? "Group Stage" : "Round of 32",
+        stage: normalizeStageFromApiSports(fixture.league.round),
         group: fixture.league.round?.startsWith("Group") ? fixture.league.round.split(" - ").at(-1) : undefined,
         venue: fixture.fixture.venue?.name,
         stats: getStats(fixture),

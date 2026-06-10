@@ -26,7 +26,7 @@ function createPlaceholderTeam(code: string): Team {
     return toTeamFromSeed(mappedTeam);
   }
 
-  if (/^[A-L][1-4]$/.test(code)) {
+  if (/^[A-P][1-4]$/.test(code)) {
     return {
       id: code,
       name: `Group ${code[0]} Seed ${code[1]}`,

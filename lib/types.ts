@@ -16,6 +16,7 @@ export interface Team {
   flagEmoji: string;
   flagUrl?: string;
   ranking?: number;
+  elo?: number;
 }
 
 export interface MatchEvent {
@@ -42,6 +43,9 @@ export interface MatchStats {
   redCards?: MatchStatPair;
   substitutions?: MatchStatPair;
   dangerousAttacks?: MatchStatPair;
+  totalPasses?: MatchStatPair;
+  passesAccurate?: MatchStatPair;
+  goalkeeperSaves?: MatchStatPair;
 }
 
 export interface Match {
@@ -56,6 +60,8 @@ export interface Match {
   stage: MatchStage;
   group?: string;
   venue?: string;
+  venueLat?: number;
+  venueLon?: number;
   events?: MatchEvent[];
   stats?: MatchStats;
   source?: string;

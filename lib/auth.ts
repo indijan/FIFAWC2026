@@ -1,7 +1,7 @@
 export const ACCESS_COOKIE_NAME = "wc26_access";
 
 function getSessionSecret() {
-  return process.env.SESSION_SECRET || process.env.SITE_PASSWORD || "wc26-local-session";
+  return process.env.SESSION_SECRET || process.env.SITE_PASSWORD || "";
 }
 
 function getConfiguredPassword() {
@@ -14,12 +14,13 @@ function bytesToHex(bytes: Uint8Array) {
 
 export async function getAccessToken() {
   const password = getConfiguredPassword();
+  const secret = getSessionSecret();
 
-  if (!password) {
+  if (!password || !secret) {
     return null;
   }
 
-  const payload = `${password}:${getSessionSecret()}`;
+  const payload = `${password}:${secret}`;
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(payload));
   return bytesToHex(new Uint8Array(digest));
 }
